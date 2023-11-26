@@ -1,0 +1,4 @@
+#Sun Nov 26 15:57:07 YEKT 2023
+base.0=/Users/dmitrijsimagin/StudioProjects/hack4/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
