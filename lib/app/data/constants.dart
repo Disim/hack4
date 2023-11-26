@@ -3,7 +3,7 @@
 abstract class Constants {
   static const SUCCESS = 'success';
   static const VERSION = '1.0.6';
-  static const BASE_URL = 'https://apidsds.ru/api/v1/';
+  static const BASE_URL = 'https://apidsds.ru:10001/api/v1/';
   static const IMAGES_PATH = 'assets/img';
   static const LANGUAGE_PATH = 'assets/locales';
   static const String COUNTRY_CODE = 'country_code';

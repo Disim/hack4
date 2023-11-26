@@ -11,6 +11,8 @@ class NewsPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String publishDate =
+        '${post.datePublish.day}.${post.datePublish.month}.${post.datePublish.year}.';
     return Card(
       margin: const EdgeInsets.all(8),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -34,8 +36,18 @@ class NewsPost extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('${post.by} * ${post.datePublish}',
-                  style: Theme.of(context).textTheme.titleMedium),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(post.by,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ),
+                  Text(publishDate,
+                      style: Theme.of(context).textTheme.titleMedium),
+                ],
+              ),
               Text(
                 post.title,
                 style: Theme.of(context).textTheme.titleLarge,
@@ -45,25 +57,28 @@ class NewsPost extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              const ActionChip(
-                elevation: 6.0,
-                label: Text('dfsdf'),
-                shape: StadiumBorder(
-                  side: BorderSide(
-                    width: 1,
-                  ),
-                ),
+              SizedBox(
+                height: 50,
+                child: ListView.builder(
+                    itemCount: post.tags.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      final String tag = post.tags[index];
+                      return ActionChip(
+                        elevation: 6.0,
+                        label: Text(tag),
+                        shape: const StadiumBorder(
+                          side: BorderSide(
+                            width: 1,
+                          ),
+                        ),
+                      );
+                    }),
               )
             ],
           ),
-        )
-        // Expanded(
-        //   child: ListView.builder(
-        //       shrinkWrap: true,
-        //       itemBuilder: (context, index) {
-        //         return Chip(label: Text('fdsfdsf'));
-        //       }),
-        // )
+        ),
       ]),
     );
   }
